@@ -122,7 +122,7 @@ export class battleRoom extends Room<State> {
                         ]
                     }
                     console.log("result for publish-->> ", result);
-                    publishResult(result);
+                   // publishResult(result);
                     this.clock.setTimeout(() => {
                         this.disconnect();
                     }, 2000);
@@ -213,7 +213,7 @@ export class battleRoom extends Room<State> {
                         this.clock.setTimeout(() => {
                             this.disconnect();
                         }, 2000);
-                        publishResult(result);
+                        //publishResult(result);
                     }
                 }
             }
@@ -353,34 +353,34 @@ export class battleRoom extends Room<State> {
         })
     }
 
-    async onAuth(client: Client, options: any) {
-        console.log("on auth user id->", options["userId"]);
-        if (options["userId"]) {
-            try {
-                let userData;
-                let response = await axios.get(`${url.getBattleDataUrl}${this.roomId}`)
-                console.log("userData -->>", response.data);
-                let users = response.data.result.players;
-                for (let index = 0; index < users.length; index++) {
-                    if (options["userId"] == users[index].id) {
-                        //console.log("userId found in auth-->", users[index].id);
-                        userData = users[index];
-                    }
-                }
-                if (userData) {
-                    return users;
-                }
-                else {
-                    return false;
-                }
-            } catch (error) {
-                throw new ServerError(500, 'Something went wrong!');
-            }
-        }
-        else {
-            throw new ServerError(400, "no userId provided");
-        }
-    }
+    // async onAuth(client: Client, options: any) {
+    //     console.log("on auth user id->", options["userId"]);
+    //     if (options["userId"]) {
+    //         try {
+    //             let userData;
+    //             let response = await axios.get(`${url.getBattleDataUrl}${this.roomId}`)
+    //             console.log("userData -->>", response.data);
+    //             let users = response.data.result.players;
+    //             for (let index = 0; index < users.length; index++) {
+    //                 if (options["userId"] == users[index].id) {
+    //                     //console.log("userId found in auth-->", users[index].id);
+    //                     userData = users[index];
+    //                 }
+    //             }
+    //             if (userData) {
+    //                 return users;
+    //             }
+    //             else {
+    //                 return false;
+    //             }
+    //         } catch (error) {
+    //             throw new ServerError(500, 'Something went wrong!');
+    //         }
+    //     }
+    //     else {
+    //         throw new ServerError(400, "no userId provided");
+    //     }
+    // }
 
     onJoin(client: Client, options: any, auth: any) {
         //console.log("auth->", auth);
@@ -424,7 +424,7 @@ export class battleRoom extends Room<State> {
                 // }
 
                 let payload = {
-                    battleData: auth,
+                    battleData: "sndvshdab",
                 }
                 this.broadcast(sendEvents.ROOM_FILLED, payload);
 
@@ -488,7 +488,7 @@ export class battleRoom extends Room<State> {
                 this.clock.setTimeout(() => {
                     this.disconnect();
                 }, 1000)
-                publishResult(result);
+                //publishResult(result);
             }
         } catch (error) {
             console.log(error);
