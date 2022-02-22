@@ -1,0 +1,29 @@
+{
+  "name": "snake-and-ladders-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "cp .env ./dist/.env && tsc",
+    "start": "ts-node src/main.ts",
+    "start:dev": "ts-node-dev --watch \"src/**/*\" --respawn --transpile-only src/main.ts ",
+    "start:prod": "node dist/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "schema-codegen": "schema-codegen src/room/schema/* --csharp --output ./Assets/Scripts/States/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "colyseus": "^0.14.23",
+    "colyseus.js": "^0.14.13",
+    "dotenv": "^10.0.0",
+    "egoroof-blowfish": "^2.2.2",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.6"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.2"
+  }
+}
